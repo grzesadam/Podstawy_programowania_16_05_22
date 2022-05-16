@@ -34,7 +34,7 @@ def multihist(ff):
         a.append(ff[:, i - 1])
     plt.subplot()
     for f in a:
-        histogram(10, f)
+        histogram(f)
     plt.show()
 
 

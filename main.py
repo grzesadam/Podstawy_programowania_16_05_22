@@ -45,7 +45,7 @@ def plot_histograms(histogram_matrix, bins):
     plots = histogram_matrix.shape[1]
     number_of_cols = 4
     number_of_rows = ceil(plots / number_of_cols)
-    fig, axs = plt.subplots(number_of_rows, number_of_cols)
+    fig, axs = plt.subplots(number_of_rows, number_of_cols, figsize=(15,15))
     for i in range(number_of_cols):
         for j in range(number_of_rows):
             try:

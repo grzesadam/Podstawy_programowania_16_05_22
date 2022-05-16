@@ -1,1 +1,1 @@
-# Podtsawy_programowania_16_05_22
+# Podstawy_programowania_16_05_22

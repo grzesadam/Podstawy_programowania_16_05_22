@@ -10,5 +10,5 @@ W rozwiązaniu zadania wykorzystaj bibliotekę numpy i matplotlib.
 4) Wykreśl histogram wartości dla każdej kolumny. Wykres wykonaj w ten sposób, aby miał K paneli (podwykresów - wykorzystaj subplots). Jeśli np. K=12, wykres powinien mieć 3x4 paneli dla każdego z przedziałów. Na każdym z paneli powinna znależć się legenda, która określi przedział klasowy dla którego wykreślony jest histogram, wartość średnią kolumny oraz odchylenie standardowe. 
 5) Zadbaj o odpowiednie opisy osi. W jednym wierszu powinny się znaleźć maksymalnie 4 histogramy. Zdecyduj czy przedziały klasowe dla poszczególnych histogramów powinny zostać dobrane automatycznie, czy lepiej je ustalić.
 6) Obliczenia wykonaj dla N równego 100, 1000, 10000, K równego np. 5, 10, 20, M równego 100, 1000, 10000
-7) Co można powiedzieć o rozkładzie liczby wartości w przedziale histogramu?Ewentualnei wykonaj odpowiedni test statystyczny.
+7) Co można powiedzieć o rozkładzie liczby wartości w przedziale histogramu? Ewentualnie wykonaj odpowiedni test statystyczny.
 8) Napisany program wykorzystaj do zbadania innych rozkładów w punkcie 1, tzn. zamiast rozkładu równoniemrnego zbadaj np. rozkład normalny, Poissona, Chi^2. 

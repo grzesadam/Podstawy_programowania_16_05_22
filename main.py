@@ -11,8 +11,8 @@ rng = np.random.default_rng()
 N = 100  # ilosć liczb losowych
 A = 0  # początek przedizału
 B = 1  # koniec przedziału
-K = 5  # liczba kolumn
-M = 5  # liczba wierszy
+K = 10  # liczba kolumn
+M = 10  # liczba wierszy
 
 
 def polecenie_3(m):
@@ -30,9 +30,8 @@ def polecenie_3(m):
 
 matrix = polecenie_3(M)
 
-fig, axs = plt.subplots(M, K)
+fig, axs = plt.subplots(1, K)
 for i in range(K):
-    axs[0,i].hist(matrix[i, :])
-
+    axs[i].hist(matrix[i, :])
 
 plt.show()

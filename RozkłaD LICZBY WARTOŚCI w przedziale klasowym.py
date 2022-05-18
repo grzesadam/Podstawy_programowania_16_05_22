@@ -2,39 +2,44 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 rng = np.random.default_rng()
-n = 10000
-m = 100
+n = 100
+#number of numbers
+m = 10
+#number of function calls
 a=-10
+#edge min
 b=10
+#edge max
+k=20
+#number of class_interval
 
-def generator(n,a,b):
+def number_generator(a,b,n):
 
-    sums_of_vals = np.random.uniform(a,b,n)
+    distribution = np.random.uniform(a,b,n)
 
-    return sums_of_vals
+    return distribution
 
-def przedzial_klasowy(n, sums_of_vals):
-    k=int(n**0.5)
-    xmax=max(sums_of_vals)
-    xmin=min(sums_of_vals)
-    x=xmax-xmin
+def class_interval(a,b,k):
     bins=np.linspace(a,b,k)
-    print(k)
-    return(bins)
+    return bins
 
 
 
-o=np.vstack([generator(n,a,b) for i in range(m) ])
 
+distribution=number_generator(a,b,n)
 
-generator(n,a,b)
+bins=class_interval(a,b,k)
+arr_of_zeros = np.zeros ((10, k - 1))
 
-sums_of_vals=generator(n,a,b)
-przedzial_klasowy(n, sums_of_vals)
-bins=przedzial_klasowy(n, sums_of_vals)
-h=np.histogram(o,bins=bins)
-w=h[1]
-c=h[0]
-matrix=np.vstack(w)
-matrix1=np.concatenate(w,c)
-print(matrix1)
+def matrix(m):
+    for i in range(m):
+        y=number_generator(a,b,n)
+        h, _ =np.histogram(y,bins=bins)
+        arr_of_zeros[i] += h
+    c=np.vstack(arr_of_zeros)
+    s=c.T
+    return s
+s=matrix(m)
+print(bins)
+print(s[0])
+print(s)

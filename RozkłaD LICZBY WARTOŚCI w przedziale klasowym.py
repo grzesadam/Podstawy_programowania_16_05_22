@@ -4,9 +4,9 @@ import math
 
 
 rng = np.random.default_rng()
-n = 100
+n = 10000
 # number of numbers
-m = 10
+m = 100
 # number of function calls
 a = -10
 # edge min
@@ -29,7 +29,7 @@ def class_interval(a, b, k):
 
 distribution = number_generator(a, b, n)
 bins = class_interval(a, b, k)
-arr_of_zeros = np.zeros((10, k - 1))
+arr_of_zeros = np.zeros((m, k - 1))
 
 
 def matrix(m):
@@ -42,22 +42,25 @@ def matrix(m):
     return s
 
 
+h=matrix(m)
 s = matrix(m)
 
 co = math.ceil((k - 1) / 4)
 # number of rows
+def historams(co,s):
 
+    fig, ax = plt.subplots(nrows=co, ncols=4, sharex='col', sharey='row', figsize=(7, 7), dpi=300, squeeze=True)
+    fig.suptitle('Histogram of the values for each column')
 
-fig, ax = plt.subplots(nrows=co, ncols=4, sharex='col', sharey='row', figsize=(7, 7), dpi=300, squeeze=True)
-fig.suptitle('Histogram of the values for each column')
+    ax = ax.ravel()
 
-ax = ax.ravel()
+    for idx, axi in enumerate(ax):
+        bins1 =np.linspace(0,max(s[idx]),len([i for i in s[idx] if i!=1]))
+        axi.hist(s[idx],bins=bins1)
+        plt.xlabel('number')
+        plt.ylabel('numbers of number')
 
-for idx, axi in enumerate(ax):
-    bins1 =np.linspace(0,max(s[idx]),len([i for i in s[idx] if i!=1]))
-    axi.hist(s[idx],bins=bins1)
-    plt.xlabel('number')
-    plt.ylabel('numbers of number')
-
-plt.tight_layout()
-plt.show()
+    plt.tight_layout()
+    plt.show()
+historams(co,s)
+print(h)

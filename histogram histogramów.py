@@ -40,7 +40,6 @@ for idx, cx in enumerate(c):
         p += mattrix[idx, i]
     p = p/m
     cx.set_xlabel('average value ' + str(round(p, 2)))
-
     cx.set_ylabel('6')
 
 plt.tight_layout()

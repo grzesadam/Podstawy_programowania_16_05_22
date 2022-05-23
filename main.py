@@ -48,14 +48,13 @@ def plot_histograms(histogram_matrix, bins):
     fig, axs = plt.subplots(number_of_rows, number_of_cols, figsize=(15,15))
     for i in range(number_of_cols):
         for j in range(number_of_rows):
-            try:
-                current_bin = j * number_of_cols + i
-                hist, b = np.histogram(histogram_matrix[:, current_bin])
-                current_ax = axs[j, i]
-                current_ax.bar(b[:-1], hist, width=1)
-                current_ax.legend('adasda')
-            except IndexError as ex:
-                pass
+            current_bin = j * number_of_cols + i
+            if current_bin >= plots:
+                continue
+            hist, b = np.histogram(histogram_matrix[:, current_bin])
+            current_ax = axs[j, i]
+            current_ax.bar(b[:-1], hist, width=1)
+            current_ax.legend('adasda')
     plt.show()
 
 

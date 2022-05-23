@@ -5,7 +5,7 @@ a = 2
 b = 123
 N = 1000
 M = 100
-K = 10
+K = 12
 
 
 def matrix():
@@ -19,11 +19,19 @@ def matrix():
 
 
 def plots():
+    num_of_cols = 4
+    num_of_rows = 3
     array = np.array(hist_data)
-    for i in range(K):
-        hist, bins = np.histogram(array[:,i])
-        plt.bar(bins[:-1], hist)
-        plt.show()
+    fig, axs = plt.subplots(num_of_rows, num_of_cols)
+    for i in range(num_of_rows):
+        for j in range(num_of_cols):
+            hist, bins = np.histogram(array[:, num_of_cols * i + j])
+            axs[i, j].bar(bins[:-1], hist)
+            axs[i, j].legend()
+            axs[i, j].set_ylabel('number')
+            axs[i, j].set_xlabel('bins')
+    plt.show()
+
 
 
 hist_data, bins_data = matrix()

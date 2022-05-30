@@ -26,10 +26,10 @@ def plots():
     for i in range(num_of_rows):
         for j in range(num_of_cols):
             hist, bins = np.histogram(array[:, num_of_cols * i + j])
-            axs[i, j].bar(bins[:-1], hist)
-            axs[i, j].legend()
+            axs[i, j].bar(bins[:-1], hist, label=bins)
             axs[i, j].set_ylabel('number')
             axs[i, j].set_xlabel('bins')
+    fig.legend(loc='upper left', fontsize='x-small')
     plt.show()
 
 

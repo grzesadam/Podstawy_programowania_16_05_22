@@ -1,0 +1,76 @@
+import random
+import matplotlib.pyplot as plt
+import numpy
+import numpy as np
+
+S = 20
+a = -S
+b = S
+n = 3
+k = 8.9875 * 10 ** 9
+g0 = 10
+m = 2
+
+
+x = []
+y = []
+z = []
+w = []
+q = []
+G = []
+G1 = []
+G2 = []
+
+fig = plt.figure(figsize=(4, 4))
+ax = fig.add_subplot(111, projection='3d')
+
+for j in range(n):
+    x.append(random.uniform(a, b)/m)
+    y.append(random.uniform(a, b)/m)
+    z.append(random.uniform(a, b)/m)
+    w.append(random.randint(0, 1))
+    q.append((random.random()) * (2 * w[j] - 1))
+
+x1 = np.arange(a, b, 1 / g0)
+y1 = np.arange(a, b, 1 / g0)
+X, Y = np.meshgrid(x1, y1)
+
+
+def V(i, a1, b1, c1):
+    r = ((x[i] - a1) ** 2 + (y[i] - b1) ** 2 + (z[i] - c1) ** 2) ** 0.5
+    return k * q[i] / r
+
+
+for f in range(g0 * (b - a)):
+    g = 0
+    for u in range(n):
+        g += V(u, X[f], Y[f], -1)
+    G.append(g)
+    g = 0
+    # for u1 in range(n):
+    #     g += V(u1, X[f], Y[f], 0)
+    # G1.append(g)
+    # g = 0
+    # for u2 in range(n):
+    #     g += V(u2, X[f], Y[f], 1)
+    # G2.append(g)
+
+colormap = numpy.array(['r', 'b'])
+ax.scatter(x, y, z, marker="o", c=colormap[w])
+
+fig, ax = plt.subplots()
+CS = ax.contour(X, Y, G)
+ax.clabel(CS, inline=True, fontsize=10, fmt=('%.2e' + '[V]'))
+
+ax.set_xlim(-S, S)
+ax.set_ylim(-S, S)
+
+# CS1 = ax.contour(X, Y, G1)
+# ax.clabel(CS1, inline=True, fontsize=5)
+#
+# CS2 = ax.contour(X, Y, G2)
+# ax.clabel(CS2, inline=True, fontsize=5)
+
+ax.set_title("Isoline's of electric field potential")
+
+plt.show()
